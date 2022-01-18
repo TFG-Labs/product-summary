@@ -1,9 +1,9 @@
 {
   "vendor": "tfgroup",
-  "name": "product-summary",
-  "version": "2.78.0",
-  "title": "Product Summary",
-  "description": "Product summary component",
+  "name": "strapi-cms-app",
+  "version": "0.0.0",
+  "title": "Strapi CMS App",
+  "description": "An app containing components pulling data from TFG Strapi CMS",
   "defaultLocale": "pt-BR",
   "builders": {
     "store": "0.x",
