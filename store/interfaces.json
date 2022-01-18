@@ -1,6 +1,6 @@
 {
   "list-context.tfg-product-list": {
-    "allowed": "*",
+    "allowed": ["product-summary"],
     "composition": "children",
     "component": "ProductSummaryList",
     "preview": {
@@ -9,7 +9,7 @@
     }
   },
   "list-context.tfg-product-list-static": {
-    "allowed": "*",
+    "allowed": ["product-summary"],
     "composition": "children",
     "component": "ProductSummaryListWithoutQuery"
   }
