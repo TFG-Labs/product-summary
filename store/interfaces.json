@@ -7,10 +7,5 @@
       "type": "grid",
       "height": 550
     }
-  },
-  "list-context.tfg-product-list-static": {
-    "allowed": ["product-summary"],
-    "composition": "children",
-    "component": "ProductSummaryListWithoutQuery"
   }
 }
