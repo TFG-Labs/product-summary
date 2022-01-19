@@ -9,7 +9,6 @@ import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from './utils/normalize'
 
-
 const parseFilters = ({ id, value }: { id: string; value: string }) =>
   `specificationFilter_${id}:${value}`
 
@@ -34,7 +33,7 @@ interface Props {
    * @default ""
    */
   orderBy?:
-    | ''                     //empty string is Relevance
+    | '' // empty string is Relevance
     | 'OrderByTopSaleDESC'
     | 'OrderByPriceDESC'
     | 'OrderByPriceASC'
@@ -78,13 +77,13 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     category = '',
     collection,
     hideUnavailableItems = false,
-    orderBy = '', 
+    orderBy = '',
     specificationFilters = [],
     maxItems = 10,
     skusFilter = 'ALL_AVAILABLE',
     installmentCriteria = 'MAX_WITHOUT_INTEREST',
     children,
-    listName: rawListName, 
+    listName: rawListName,
     ProductSummary,
     actionOnProductClick,
     preferredSKU,
@@ -111,6 +110,8 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       installmentCriteria,
     },
   })
+  console.log(data)
+  console.log(QueryProducts)
 
   const { products } = data ?? {}
   // Not using ?? operator because listName can be ''

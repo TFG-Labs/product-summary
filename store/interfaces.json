@@ -7,5 +7,15 @@
       "type": "grid",
       "height": 550
     }
+  },
+
+  "list-context.tfg-product-list-two": {
+    "allowed": ["product-summary"],
+    "composition": "children",
+    "component": "TFGProductSummaryList",
+    "preview": {
+      "type": "grid",
+      "height": 550
+    }
   }
 }
