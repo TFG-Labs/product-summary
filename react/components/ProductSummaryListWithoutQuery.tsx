@@ -9,7 +9,7 @@ import {
   PreferenceType,
 } from '../utils/normalize'
 import ProductListEventCaller from './ProductListEventCaller'
-import type { ProductClickParams } from '../ProductSummaryList'
+import type { ProductClickParams } from './ProductSummaryList'
 
 const { ProductListProvider } = ProductListContext
 

@@ -6,8 +6,8 @@ import type { QueryProductsTypes } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
-import ProductSummaryListWithoutQuery from './components/ProductSummaryListWithoutQuery'
-import { PreferenceType } from './utils/normalize'
+import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
+import { PreferenceType } from '../utils/normalize'
 
 const parseFilters = ({ id, value }: { id: string; value: string }) =>
   `specificationFilter_${id}:${value}`

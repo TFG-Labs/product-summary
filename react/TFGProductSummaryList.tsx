@@ -2,7 +2,7 @@ import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
 
-import ProductSummaryList from './ProductSummaryList'
+import ProductSummaryList from './components/ProductSummaryList'
 import type { Data, Variables } from './QueryProductType'
 import QueryProducts from './QueryProducts'
 
