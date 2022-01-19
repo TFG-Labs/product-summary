@@ -2,7 +2,7 @@
   "list-context.tfg-product-list": {
     "allowed": ["product-summary"],
     "composition": "children",
-    "component": "ProductSummaryList",
+    "component": "TFGProductSummaryList",
     "preview": {
       "type": "grid",
       "height": 550

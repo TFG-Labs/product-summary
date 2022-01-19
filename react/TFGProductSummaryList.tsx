@@ -28,12 +28,12 @@ interface Props {
 function TFGProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category,
-    collection = '142', //
+    collection,
     listName,
     ProductSummary,
     actionOnProductClick,
 
-    // children,
+    children,
   } = props
 
   console.log('props', props)
@@ -45,7 +45,9 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
       listName={listName}
       actionOnProductClick={actionOnProductClick}
       ProductSummary={ProductSummary}
-    />
+    >
+      {children}
+    </ProductSummaryList>
   )
 }
 
