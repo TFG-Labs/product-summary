@@ -7,9 +7,9 @@ import { ProductListContext } from 'vtex.product-list-context'
 import {
   mapCatalogProductToProductSummary,
   PreferenceType,
-} from './utils/normalize'
-import ProductListEventCaller from './components/ProductListEventCaller'
-import type { ProductClickParams } from './ProductSummaryList'
+} from '../utils/normalize'
+import ProductListEventCaller from './ProductListEventCaller'
+import type { ProductClickParams } from '../ProductSummaryList'
 
 const { ProductListProvider } = ProductListContext
 

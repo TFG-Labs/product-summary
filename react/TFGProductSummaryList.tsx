@@ -1,7 +1,8 @@
 import React from 'react'
-import type { PropsWithChildren } from 'react'
+import type { ComponentType, PropsWithChildren } from 'react'
 
-// ComponentType,
+import ProductSummaryList from './ProductSummaryList'
+
 /**
  *  This component is responsbile for reading in  data from strapi
  *  and callin the Product Summary List with the relevant
@@ -19,28 +20,32 @@ interface Props {
   /** Name of the list property on Google Analytics events. */
   listName?: string
 
-  //   /** Slot of a product summary. */
-  //   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
-  //   /** Callback on product click. */
-  //   actionOnProductClick?: (product: any) => void
+  /** Slot of a product summary. */
+  ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
+  /** Callback on product click. */
+  actionOnProductClick?: (product: any) => void
 }
 function TFGProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category,
-    collection = '',
+    collection = '142', //
     listName,
-    // ProductSummary,
-    // actionOnProductClick,
+    ProductSummary,
+    actionOnProductClick,
 
     // children,
   } = props
 
+  console.log('props', props)
+
   return (
-    <div>
-      category {category}
-      collection {collection}
-      list name {listName}
-    </div>
+    <ProductSummaryList
+      category={category}
+      collection={collection}
+      listName={listName}
+      actionOnProductClick={actionOnProductClick}
+      ProductSummary={ProductSummary}
+    />
   )
 }
 

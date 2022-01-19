@@ -6,7 +6,7 @@ import type { QueryProductsTypes } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
-import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
+import ProductSummaryListWithoutQuery from './components/ProductSummaryListWithoutQuery'
 import { PreferenceType } from './utils/normalize'
 
 const parseFilters = ({ id, value }: { id: string; value: string }) =>
@@ -74,8 +74,8 @@ interface Props {
 
 function ProductSummaryList(props: PropsWithChildren<Props>) {
   const {
-    category = '',
-    collection,
+    category, // = '2/7/15',
+    collection, //= '142',
     hideUnavailableItems = false,
     orderBy = '',
     specificationFilters = [],
@@ -110,8 +110,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       installmentCriteria,
     },
   })
-  console.log(data)
-  console.log(QueryProducts)
+  console.log('internal props', props)
 
   const { products } = data ?? {}
   // Not using ?? operator because listName can be ''
@@ -137,6 +136,8 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   if (loading || error) {
     return null
   }
+
+  console.log('data', data)
 
   return (
     <ProductSummaryListWithoutQuery
