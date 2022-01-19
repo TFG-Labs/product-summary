@@ -1,10 +1,8 @@
 import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
-import { useQuery } from 'react-apollo'
 
+import useProductByIdentifier from './components/useProductByIdentifier'
 import ProductSummaryList from './components/ProductSummaryList'
-import type { Data, Variables } from './QueryProductType'
-import QueryProducts from './QueryProducts'
 
 /**
  *  This component is responsbile for reading in  data from strapi
@@ -39,26 +37,13 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     children,
   } = props
 
-  const { data, loading, error } = useQuery<Data, Variables>(QueryProducts, {
-    variables: {
-      category,
-      ...(collection != null
-        ? {
-            collection,
-          }
-        : {}),
-      specificationFilters: [],
-      orderBy: '',
-      from: 0,
-      to: 10 - 1,
-      hideUnavailableItems: true,
-      skusFilter: 'ALL_AVAILABLE',
-      installmentCriteria: 'MAX_WITHOUT_INTEREST',
-    },
+  const { data, loading, error } = useProductByIdentifier({
+    category,
+    collection,
   })
 
   console.log('props', props)
-  console.log('data bla bla', data)
+  console.log('data whoop whoop bla', data)
   console.log('loading', error)
   console.log('error', loading)
 
