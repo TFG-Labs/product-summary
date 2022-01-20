@@ -1,17 +1,10 @@
 import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 
-import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
-import { ProductSummaryListWithoutQuery } from 'vtex.product-summary'
-
+import type { ActionOnProductClickType } from './useProductClick'
 import useFilteredProducts from './useFilteredProducts'
-import useProductClick, { ActionOnProductClickType } from './useProductClick'
+import ProductSummaryListWidget from './ProductSummaryListWidget'
 
-type PreferenceType =
-  | 'FIRST_AVAILABLE'
-  | 'LAST_AVAILABLE'
-  | 'PRICE_ASC'
-  | 'PRICE_DESC'
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
   category?: string
@@ -19,8 +12,6 @@ interface Props {
   collection?: string
   /** Name of the list property on Google Analytics events. */
   listName?: string
-  /** Logic to enable which SKU will be the selected item */
-  preferredSKU?: PreferenceType
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
@@ -32,39 +23,30 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     category, // = '2/7/15',
     collection, //= '142',
     children,
-    listName: rawListName,
+    listName,
     ProductSummary,
     actionOnProductClick,
-    preferredSKU,
   } = props
 
   const { data, loading, error } = useFilteredProducts({ category, collection })
 
   const { products } = data ?? {}
-  // Not using ?? operator because listName can be ''
-  // eslint-disable-next-line no-unneeded-ternary
-  const listName = rawListName ? rawListName : 'List of products'
-
-  const productClick = useProductClick({ listName, actionOnProductClick })
 
   if (loading || error) {
     return null
   }
 
-  console.log('data', data)
-  console.log('made useProuct Click its own function  ')
+  console.log('huge refactor for product widget')
 
   return (
-    <ProductSummaryListWithoutQuery
-      products={products}
+    <ProductSummaryListWidget
       listName={listName}
+      products={products}
       ProductSummary={ProductSummary}
-      actionOnProductClick={productClick}
-      preferredSKU={preferredSKU}
+      actionOnProductClick={actionOnProductClick}
     >
-      <ProductListStructuredData products={products} />
       {children}
-    </ProductSummaryListWithoutQuery>
+    </ProductSummaryListWidget>
   )
 }
 

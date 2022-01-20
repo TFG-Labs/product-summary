@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 
-import ProductSummaryList from './components/ProductSummaryList'
+import ProductSummaryListWrapper from './components/ProductSummaryListWrapper'
 
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
@@ -42,7 +42,7 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
   //   })
 
   return (
-    <ProductSummaryList
+    <ProductSummaryListWrapper
       category={category}
       collection={collection}
       listName={listName}
@@ -50,7 +50,7 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
       ProductSummary={ProductSummary}
     >
       {children}
-    </ProductSummaryList>
+    </ProductSummaryListWrapper>
   )
 }
 
