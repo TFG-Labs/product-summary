@@ -1,7 +1,6 @@
 import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 
-import useProductByIdentifier from './components/useProductByIdentifier'
 import ProductSummaryList from './components/ProductSummaryList'
 
 /**
@@ -37,15 +36,9 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     children,
   } = props
 
-  const { data, loading, error } = useProductByIdentifier({
-    category,
-    collection,
-  })
-
-  console.log('props', props)
-  console.log('data whoop whoop bla', data)
-  console.log('loading', error)
-  console.log('error', loading)
+  //   const { data, loading, error } = useProductByIdentifier({
+  //     productIds: ['686', '255'],
+  //   })
 
   return (
     <ProductSummaryList

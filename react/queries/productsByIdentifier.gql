@@ -1,0 +1,24 @@
+# import '../fragments/product.graphql'
+# import '../fragments/item.graphql'
+# import '../fragments/seller.graphql'
+# import '../fragments/commertialOffer.graphql'
+# import '../fragments/installment.graphql'
+
+query productsByIdentifier($ids: [ID!]) {
+  productsByIdentifier(field: id, values: $ids)
+    @context(provider: "vtex.search-graphql") {
+    ...ProductFragment
+    items(filter: ALL_AVAILABLE) {
+      ...ItemFragment
+      sellers {
+        ...SellerFragment
+        commertialOffer {
+          ...CommertialOfferFragment
+          Installments(criteria: MAX_WITHOUT_INTEREST) {
+            ...InstallmentFragment
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,13 +21,7 @@
     "types": ["node", "jest"]
   },
   "exclude": ["node_modules"],
-  "include": [
-    "./typings/*.d.ts",
-    "./**/*.tsx",
-    "./**/*.ts",
-    "fragments/CommertialOfferType.tss",
-    "fragments/InstallmentType.tst"
-  ],
+  "include": ["./typings/*.d.ts", "./**/*.tsx", "./**/*.ts"],
   "typeAcquisition": {
     "enable": false
   }
