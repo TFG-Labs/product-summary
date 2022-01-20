@@ -1,6 +1,6 @@
 import { useQuery } from 'react-apollo'
+import type { QueryProductsTypes } from 'vtex.store-resources'
 
-import type { Data } from '../QueryProductType'
 import QueryProductsByIdentifer from '../QueryProductsByIdenitifer'
 
 interface Props {
@@ -12,7 +12,7 @@ type Variables = {
 }
 
 function useProductByIdentifier({ productIds = [] }: Props) {
-  const { data, loading, error } = useQuery<Data, Variables>(
+  const { data, loading, error } = useQuery<QueryProductsTypes.Data, Variables>(
     QueryProductsByIdentifer,
     {
       variables: { ids: productIds },
