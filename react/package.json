@@ -23,7 +23,7 @@
     "@vtex/test-tools": "^3.3.2",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
-    "tfgroup.strapi-cms-app": "https://shaheen--tfgroup.myvtex.com/_v/private/typings/linked/v1/tfgroup.strapi-cms-app@0.0.0+build1642680325/public/@types/tfgroup.strapi-cms-app",
+    "tfgroup.strapi-cms-app": "https://shaheen--tfgroup.myvtex.com/_v/private/typings/linked/v1/tfgroup.strapi-cms-app@0.0.0+build1642680332/public/@types/tfgroup.strapi-cms-app",
     "typescript": "3.9.7",
     "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.0/public/@types/vtex.css-handles",
     "vtex.device-detector": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.device-detector@0.2.6/public/@types/vtex.device-detector",

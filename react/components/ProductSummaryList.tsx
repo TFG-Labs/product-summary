@@ -4,12 +4,17 @@ import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 import { ProductSummaryListWithoutQuery } from 'vtex.product-summary'
 
-import { PreferenceType } from '../utils/normalize'
 import useFilteredProducts from './useFilteredProducts'
 
 export interface ProductClickParams {
   position: number
 }
+
+type PreferenceType =
+  | 'FIRST_AVAILABLE'
+  | 'LAST_AVAILABLE'
+  | 'PRICE_ASC'
+  | 'PRICE_DESC'
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
   category?: string
@@ -68,7 +73,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   }
 
   console.log('data', data)
-  console.log('using deleted item ')
+  console.log('using without normalize file ')
 
   return (
     <ProductSummaryListWithoutQuery

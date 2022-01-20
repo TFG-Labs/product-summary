@@ -4761,9 +4761,9 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-"tfgroup.strapi-cms-app@https://shaheen--tfgroup.myvtex.com/_v/private/typings/linked/v1/tfgroup.strapi-cms-app@0.0.0+build1642680325/public/@types/tfgroup.strapi-cms-app":
+"tfgroup.strapi-cms-app@https://shaheen--tfgroup.myvtex.com/_v/private/typings/linked/v1/tfgroup.strapi-cms-app@0.0.0+build1642680332/public/@types/tfgroup.strapi-cms-app":
   version "0.0.0"
-  resolved "https://shaheen--tfgroup.myvtex.com/_v/private/typings/linked/v1/tfgroup.strapi-cms-app@0.0.0+build1642680325/public/@types/tfgroup.strapi-cms-app#f093a3a957ebad640fa5e6d9afac0a3ecdb9374a"
+  resolved "https://shaheen--tfgroup.myvtex.com/_v/private/typings/linked/v1/tfgroup.strapi-cms-app@0.0.0+build1642680332/public/@types/tfgroup.strapi-cms-app#2a41e5df494b66e202e03efccc29c33a5ef7e970"
 
 throat@^5.0.0:
   version "5.0.0"
