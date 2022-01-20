@@ -1,14 +1,11 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
-import { usePixel } from 'vtex.pixel-manager'
+
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 import { ProductSummaryListWithoutQuery } from 'vtex.product-summary'
 
 import useFilteredProducts from './useFilteredProducts'
-
-export interface ProductClickParams {
-  position: number
-}
+import useProductClick, { ActionOnProductClickType } from './useProductClick'
 
 type PreferenceType =
   | 'FIRST_AVAILABLE'
@@ -27,7 +24,7 @@ interface Props {
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
-  actionOnProductClick?: (product: any) => void
+  actionOnProductClick?: ActionOnProductClickType
 }
 
 function ProductSummaryList(props: PropsWithChildren<Props>) {
@@ -41,39 +38,21 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     preferredSKU,
   } = props
 
-  const { push } = usePixel()
   const { data, loading, error } = useFilteredProducts({ category, collection })
-
-  console.log('internal props', props)
-  console.log('YEET')
 
   const { products } = data ?? {}
   // Not using ?? operator because listName can be ''
   // eslint-disable-next-line no-unneeded-ternary
   const listName = rawListName ? rawListName : 'List of products'
 
-  const productClick = useCallback(
-    (product: any, productClickParams?: ProductClickParams) => {
-      actionOnProductClick?.(product)
-
-      const { position } = productClickParams ?? {}
-
-      push({
-        event: 'productClick',
-        list: listName,
-        product,
-        position,
-      })
-    },
-    [push, actionOnProductClick, listName]
-  )
+  const productClick = useProductClick({ listName, actionOnProductClick })
 
   if (loading || error) {
     return null
   }
 
   console.log('data', data)
-  console.log('using without normalize file ')
+  console.log('made useProuct Click its own function  ')
 
   return (
     <ProductSummaryListWithoutQuery

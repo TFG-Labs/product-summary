@@ -7,7 +7,7 @@ function TestingQuery() {
     productIds: ['256', '686', '252'],
   })
 
-  console.log('DELETED UNECCESARY FRAGMENTS')
+  console.log('with skip')
   console.log('testing query data', data)
   console.log('testing query loading', loading)
   console.log('testing query error', error)

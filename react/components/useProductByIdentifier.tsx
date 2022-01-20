@@ -11,6 +11,10 @@ type Variables = {
   ids: string[]
 }
 
+/**
+ * Hook to query products from VTEX APIs filtering by product IDs
+ * Uses QueryProductsTypes.Data as the return type is the sam as useFilteredProducts
+ */
 function useProductByIdentifier({ productIds = [] }: Props) {
   const { data, loading, error } = useQuery<QueryProductsTypes.Data, Variables>(
     QueryProductsByIdentifer,
@@ -18,8 +22,6 @@ function useProductByIdentifier({ productIds = [] }: Props) {
       variables: { ids: productIds },
     }
   )
-
-  console.log(' query products by identifier', QueryProductsByIdentifer)
 
   return { data, loading, error }
 }
