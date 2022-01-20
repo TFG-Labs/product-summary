@@ -1,7 +1,8 @@
 import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 
-import ProductSummaryListWrapper from './components/ProductSummaryListWrapper'
+import ProductSummaryListByProductFilter from './components/ProductSummaryListByProductFilter'
+import ProductSummaryListByProductId from './components/ProductSummaryListByProductId'
 
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
@@ -34,31 +35,41 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     category,
     collection,
     listName,
-    productIds,
+    productIds = [],
     carouselVariant,
     ProductSummary,
     actionOnProductClick,
     children,
   } = props
 
-  //   const { data, loading, error } = useProductByIdentifier({
-  //     productIds: ['686', '255'],
-  //   })
+  if (carouselVariant === 'PRODUCT') {
+    return (
+      <ProductSummaryListByProductId
+        productIds={productIds}
+        listName={listName}
+        actionOnProductClick={actionOnProductClick}
+        ProductSummary={ProductSummary}
+      >
+        {children}
+      </ProductSummaryListByProductId>
+    )
+  }
 
-  console.log('productIds', productIds)
-  console.log('carouselVariant', carouselVariant)
+  if (carouselVariant === 'CATEGORY' || carouselVariant === 'COLLECTION') {
+    return (
+      <ProductSummaryListByProductFilter
+        category={category}
+        collection={collection}
+        listName={listName}
+        actionOnProductClick={actionOnProductClick}
+        ProductSummary={ProductSummary}
+      >
+        {children}
+      </ProductSummaryListByProductFilter>
+    )
+  }
 
-  return (
-    <ProductSummaryListWrapper
-      category={category}
-      collection={collection}
-      listName={listName}
-      actionOnProductClick={actionOnProductClick}
-      ProductSummary={ProductSummary}
-    >
-      {children}
-    </ProductSummaryListWrapper>
-  )
+  return null
 }
 
 export default TFGProductSummaryList

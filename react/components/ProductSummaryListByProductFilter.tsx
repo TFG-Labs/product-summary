@@ -18,7 +18,7 @@ interface Props {
   actionOnProductClick?: ActionOnProductClickType
 }
 
-function ProductSummaryList(props: PropsWithChildren<Props>) {
+function ProductSummaryListByProductFilter(props: PropsWithChildren<Props>) {
   const {
     category, // = '2/7/15',
     collection, //= '142',
@@ -36,7 +36,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     return null
   }
 
-  console.log('huge refactor for product widget')
+  console.log('second data', data)
 
   return (
     <ProductSummaryListWidget
@@ -50,4 +50,4 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   )
 }
 
-export default ProductSummaryList
+export default ProductSummaryListByProductFilter

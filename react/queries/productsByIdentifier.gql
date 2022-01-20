@@ -5,7 +5,7 @@
 # import '../fragments/installment.graphql'
 
 query productsByIdentifier($ids: [ID!]) {
-  productsByIdentifier(field: id, values: $ids)
+  products: productsByIdentifier(field: id, values: $ids)
     @context(provider: "vtex.search-graphql") {
     ...ProductFragment
     items(filter: ALL_AVAILABLE) {
