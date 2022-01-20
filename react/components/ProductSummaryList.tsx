@@ -2,29 +2,22 @@ import React, { useCallback } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
+import { ProductSummaryListWithoutQuery } from 'vtex.product-summary'
 
-import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from '../utils/normalize'
 import useFilteredProducts from './useFilteredProducts'
 
 export interface ProductClickParams {
   position: number
 }
-
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
   category?: string
-
   /** Filter by collection. */
   collection?: string
-
-  /**
-   * Name of the list property on Google Analytics events.
-   */
+  /** Name of the list property on Google Analytics events. */
   listName?: string
-  /**
-   * Logic to enable which SKU will be the selected item
-   * */
+  /** Logic to enable which SKU will be the selected item */
   preferredSKU?: PreferenceType
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
@@ -36,7 +29,6 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category, // = '2/7/15',
     collection, //= '142',
-
     children,
     listName: rawListName,
     ProductSummary,
@@ -76,6 +68,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   }
 
   console.log('data', data)
+  console.log('using deleted item ')
 
   return (
     <ProductSummaryListWithoutQuery
