@@ -1,63 +1,23 @@
 import React, { useCallback } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
-import { useQuery } from 'react-apollo'
-import { QueryProducts } from 'vtex.store-resources'
-import type { QueryProductsTypes } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from '../utils/normalize'
-
-const parseFilters = ({ id, value }: { id: string; value: string }) =>
-  `specificationFilter_${id}:${value}`
+import useFilteredProducts from './useFilteredProducts'
 
 export interface ProductClickParams {
   position: number
 }
 
-interface SpecificationFilter {
-  id: string
-  value: string
-}
-
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
   category?: string
-  /** Specification Filters of the listed items. */
-  specificationFilters?: SpecificationFilter[]
+
   /** Filter by collection. */
   collection?: string
-  /**
-   * Ordination type of the items. Possible values: `''`, `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC`
-   * @default ""
-   */
-  orderBy?:
-    | '' // empty string is Relevance
-    | 'OrderByTopSaleDESC'
-    | 'OrderByPriceDESC'
-    | 'OrderByPriceASC'
-    | 'OrderByNameASC'
-    | 'OrderByNameDESC'
-    | 'OrderByReleaseDateDESC'
-    | 'OrderByBestDiscountDESC'
-  /** Hides items that are unavailable. */
-  hideUnavailableItems?: boolean
-  /**
-   * Maximum items to be fetched.
-   * @default 10
-   */
-  maxItems?: number
-  /**
-   * Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.
-   * @default "ALL_AVAILABLE"
-   */
-  skusFilter?: 'ALL_AVAILABLE' | 'ALL' | 'FIRST_AVAILABLE'
-  /**
-   * Control what price to be shown when price has different installments options.
-   * @default "MAX_WITHOUT_INTEREST"
-   */
-  installmentCriteria?: 'MAX_WITHOUT_INTEREST' | 'MAX_WITH_INTEREST'
+
   /**
    * Name of the list property on Google Analytics events.
    */
@@ -76,12 +36,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category, // = '2/7/15',
     collection, //= '142',
-    hideUnavailableItems = false,
-    orderBy = '',
-    specificationFilters = [],
-    maxItems = 10,
-    skusFilter = 'ALL_AVAILABLE',
-    installmentCriteria = 'MAX_WITHOUT_INTEREST',
+
     children,
     listName: rawListName,
     ProductSummary,
@@ -90,27 +45,10 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   } = props
 
   const { push } = usePixel()
-  const { data, loading, error } = useQuery<
-    QueryProductsTypes.Data,
-    QueryProductsTypes.Variables
-  >(QueryProducts, {
-    variables: {
-      category,
-      ...(collection != null
-        ? {
-            collection,
-          }
-        : {}),
-      specificationFilters: specificationFilters.map(parseFilters),
-      orderBy,
-      from: 0,
-      to: maxItems - 1,
-      hideUnavailableItems,
-      skusFilter,
-      installmentCriteria,
-    },
-  })
+  const { data, loading, error } = useFilteredProducts({ category, collection })
+
   console.log('internal props', props)
+  console.log('YEET')
 
   const { products } = data ?? {}
   // Not using ?? operator because listName can be ''
