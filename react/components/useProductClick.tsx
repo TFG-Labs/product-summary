@@ -11,6 +11,10 @@ interface UseProductClickProps {
   actionOnProductClick?: ActionOnProductClickType
 }
 
+/**
+ *  hook responsible for pushing product click events to google analytics
+ *  Original Source: https://github.com/vtex-apps/product-summary/blob/master/react/ProductSummaryList.tsx#L160
+ */
 function useProductClick({
   listName,
   actionOnProductClick,

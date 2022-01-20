@@ -14,6 +14,13 @@ interface Props {
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
 }
 
+/**
+ * Component Is responsible for co -ordinating product click info
+ * and calling ProductSummaryListWithout Query
+ * Data fetching has been abstracted away from it using the single concern principle
+ * Original Source https://github.com/vtex-apps/product-summary/blob/master/react/ProductSummaryList.tsx#L180
+ */
+
 function ProductSummaryListWidget(props: PropsWithChildren<Props>) {
   const {
     children,

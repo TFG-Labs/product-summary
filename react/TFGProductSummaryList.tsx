@@ -10,6 +10,8 @@ interface Props {
   collection?: string
   /** Filter by productIds. */
   productIds?: string[]
+  /** defining the type of carousel to be rendered */
+  carouselVariant: 'PRODUCT' | 'BRAND' | 'CATEGORY' | 'COLLECTION'
   /** Name of the list property on Google Analytics events. */
   listName?: string
   /** Slot of a product summary. */
@@ -32,6 +34,8 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     category,
     collection,
     listName,
+    productIds,
+    carouselVariant,
     ProductSummary,
     actionOnProductClick,
     children,
@@ -40,6 +44,9 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
   //   const { data, loading, error } = useProductByIdentifier({
   //     productIds: ['686', '255'],
   //   })
+
+  console.log('productIds', productIds)
+  console.log('carouselVariant', carouselVariant)
 
   return (
     <ProductSummaryListWrapper

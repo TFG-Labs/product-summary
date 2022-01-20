@@ -72,6 +72,7 @@ const parseFilters = ({ id, value }: { id: string; value: string }) =>
  * ===========================================
  *  REACT HOOK
  * Calls VTEXs api to fetch filtered product data: filtered by category or collection
+ * Original source: https://github.com/vtex-apps/product-summary/blob/master/react/ProductSummaryList.tsx#L134
  * ===========================================
  */
 function useFilteredProducts({
