@@ -4,12 +4,11 @@ import { ProductSummaryListWithoutQuery } from 'vtex.product-summary'
 import type { ComponentType, PropsWithChildren } from 'react'
 import type { QueryProductsTypes } from 'vtex.store-resources'
 
-import useProductClick from './useProductClick'
-import type { ActionOnProductClickType } from './useProductClick'
+import useProductClick from '../hooks/useProductClick'
 
 interface Props {
   listName?: string
-  actionOnProductClick?: ActionOnProductClickType
+  actionOnProductClick?: (product: any) => void
   products: QueryProductsTypes.Data['products'] | undefined
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
 }

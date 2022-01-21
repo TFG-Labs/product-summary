@@ -12,8 +12,9 @@ type Variables = {
 }
 
 /**
- * Hook to query products from VTEX APIs filtering by product IDs
- * Uses QueryProductsTypes.Data as the return type is the sam as useFilteredProducts
+ * REACT HOOK
+ * Query products from VTEX APIs filtering by product IDs
+ * Uses QueryProductsTypes.Data as the return type is the same as useFilteredProducts
  */
 function useProductByIdentifier({ productIds = [] }: Props) {
   const { data, loading, error } = useQuery<QueryProductsTypes.Data, Variables>(

@@ -42,6 +42,8 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     children,
   } = props
 
+  console.log('cleaned up hooks ')
+
   if (carouselVariant === 'PRODUCT') {
     return (
       <ProductSummaryListByProductId

@@ -1,8 +1,7 @@
 import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 
-import type { ActionOnProductClickType } from './useProductClick'
-import useProductByIdentifier from './useProductByIdentifier'
+import useProductByIdentifier from '../hooks/useProductByIdentifier'
 import ProductSummaryListWidget from './ProductSummaryListWidget'
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
-  actionOnProductClick?: ActionOnProductClickType
+  actionOnProductClick?: (product: any) => void
 }
 
 function ProductSummaryListByProductId(props: PropsWithChildren<Props>) {
@@ -30,12 +29,7 @@ function ProductSummaryListByProductId(props: PropsWithChildren<Props>) {
 
   const { products } = data ?? {}
 
-  if (loading || error) {
-    return null
-  }
-  console.log('productIds', productIds)
-  console.log('bla bla', products)
-  console.log('whoop whoop data', data)
+  if (loading || error) return null
 
   return (
     <ProductSummaryListWidget

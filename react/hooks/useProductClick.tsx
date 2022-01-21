@@ -4,21 +4,19 @@ import { usePixel } from 'vtex.pixel-manager'
 export interface ProductClickParams {
   position: number
 }
-export type ActionOnProductClickType = (product: any) => void
 
-interface UseProductClickProps {
+interface Props {
   listName: string
-  actionOnProductClick?: ActionOnProductClickType
+  actionOnProductClick?: (product: any) => void
 }
 
 /**
- *  hook responsible for pushing product click events to google analytics
- *  Original Source: https://github.com/vtex-apps/product-summary/blob/master/react/ProductSummaryList.tsx#L160
+ *  REACT HOOK
+ *  Responsible for pushing product click events to google analytics
+ *  Original Source:
+ *  https://github.com/vtex-apps/product-summary/blob/master/react/ProductSummaryList.tsx#L160
  */
-function useProductClick({
-  listName,
-  actionOnProductClick,
-}: UseProductClickProps) {
+function useProductClick({ listName, actionOnProductClick }: Props) {
   const { push } = usePixel()
 
   const productClick = useCallback(
