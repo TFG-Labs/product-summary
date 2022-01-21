@@ -42,7 +42,7 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     children,
   } = props
 
-  console.log('cleaned up hooks ')
+  console.log('removed unused query')
 
   if (carouselVariant === 'PRODUCT') {
     return (
