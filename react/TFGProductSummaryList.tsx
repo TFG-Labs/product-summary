@@ -3,6 +3,7 @@ import type { ComponentType, PropsWithChildren } from 'react'
 
 import ProductSummaryListByProductFilter from './components/ProductSummaryListByProductFilter'
 import ProductSummaryListByProductId from './components/ProductSummaryListByProductId'
+import useStrapiContent from './hooks/useStrapiContent'
 
 interface Props {
   /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
@@ -42,7 +43,10 @@ function TFGProductSummaryList(props: PropsWithChildren<Props>) {
     children,
   } = props
 
-  console.log('removed unused query')
+  const { data, loading, error } = useStrapiContent()
+  console.log('data', data)
+  console.log('loading', loading)
+  console.log('error', error)
 
   if (carouselVariant === 'PRODUCT') {
     return (
