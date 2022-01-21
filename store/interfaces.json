@@ -7,9 +7,5 @@
       "type": "grid",
       "height": 550
     }
-  },
-
-  "list-context.testing-query": {
-    "component": "TestingQuery"
   }
 }
