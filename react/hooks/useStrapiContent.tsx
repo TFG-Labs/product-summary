@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 
 type APIDataReponseType = {
-  carousel: {
-    carouselVariant: 'PRODUCT' | 'COLLECTION' | 'CATEGORY'
-    collection: string
-    category: string
-    productIds: string[] | null
-  }
+  carouselVariant: 'PRODUCT' | 'COLLECTION' | 'CATEGORY'
+  collection: string
+  category: string
+  productIds: string[] | null
+  listName: string
 }
 
 /**
