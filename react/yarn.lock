@@ -4761,6 +4761,10 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
+"thefoschini.strapi-cms-app@https://shaheen--thefoschini.myvtex.com/_v/private/typings/linked/v1/thefoschini.strapi-cms-app@0.0.0+build1644415887/public/@types/thefoschini.strapi-cms-app":
+  version "0.0.0"
+  resolved "https://shaheen--thefoschini.myvtex.com/_v/private/typings/linked/v1/thefoschini.strapi-cms-app@0.0.0+build1644415887/public/@types/thefoschini.strapi-cms-app#19711f57426473e8d22235e8045f9961d9e47a71"
+
 throat@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-5.0.0.tgz#c5199235803aad18754a667d659b5e72ce16764b"
