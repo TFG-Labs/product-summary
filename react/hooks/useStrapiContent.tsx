@@ -18,7 +18,7 @@ function useStrapiContent() {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    fetch(`http://localhost:1337/api/home?populate=*`)
+    fetch(`https://vtex-strapi-v4.herokuapp.com/api/home?populate=*`)
       .then((response) => response.json())
       .then((result) => {
         const updatedData: APIDataReponseType = result.data.attributes.carousel
